@@ -38,7 +38,7 @@ app.consoleLog = function() {           // only emits console.log messages if ap
 
 // NOTE: Customize this function to initialize your application, as needed.
 
-app.initEvents = function() {
+app.initEvents = function () {
     "use strict" ;
     var fName = "app.initEvents():" ;
     app.consoleLog(fName, "entry") ;
