@@ -1,6 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget android-versionCode="1" defaultlocale="en-US" id="io.cordova.myappe2785d518e9f4f6ea03055878dd7a400" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
     <preference name="loglevel" value="DEBUG" />
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+    </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
+    <feature name="PushNotification">
+        <param name="android-package" value="com.adobe.phonegap.push.PushPlugin" />
+    </feature>
     <icon density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
     <icon density="mdpi" src="res/icons/android/icon-48-mdpi.png" />
     <icon density="hdpi" src="res/icons/android/icon-72-hdpi.png" />
@@ -25,4 +36,9 @@
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-maxSdkVersion" value="23" />
     <preference name="android-targetSdkVersion" value="17" />
+    <vs:plugin name="phonegap-facebook-plugin" src="https://github.com/Wizcorp/phonegap-facebook-plugin.git" version="0.12.0">
+        <param name="APP_ID" value="690678901065949" />
+        <param name="APP_NAME" value="Opinio" />
+    </vs:plugin>
+    <vs:plugin name="phonegap-plugin-push" src="D:\Projects\Opinio\PushNotifications\phonegap-plugin-push-1.2.3" version="1.2.3" />
 </widget>

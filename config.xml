@@ -93,4 +93,9 @@
   <preference name="android-minSdkVersion" value="14" />
   <preference name="android-maxSdkVersion" value="23" />
   <preference name="android-targetSdkVersion" value="17" />
+  <vs:plugin name="phonegap-facebook-plugin" version="0.12.0" src="https://github.com/Wizcorp/phonegap-facebook-plugin.git">
+    <param name="APP_ID" value="690678901065949" />
+    <param name="APP_NAME" value="Opinio" />
+  </vs:plugin>
+  <vs:plugin name="phonegap-plugin-push" version="1.2.3" src="D:\Projects\Opinio\PushNotifications\phonegap-plugin-push-1.2.3" />
 </widget>
