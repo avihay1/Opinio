@@ -1,0 +1,5 @@
+/bin
+/bld
+/.vs
+/platforms/android/phonegap-facebook-plugin/index-FacebookLib/ant-build
+/platforms/android/phonegap-facebook-plugin/index-FacebookLib/ant-gen
