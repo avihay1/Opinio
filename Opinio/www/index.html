@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <link rel="stylesheet" type="text/css" href="ionic/css/ionic.min.css">
+    <title>Opinio</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+
+    <style>
+        /* following three (cascaded) are equivalent to above three meta viewport statements */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+        /* see http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport {
+            width: 100vw;
+            min-zoom: 100%;
+            zoom: 100%;
+        }
+
+        @viewport {
+            width: 100vw;
+            min-zoom: 100% zoom: 100%;
+        }
+
+        @-ms-viewport {
+            user-zoom: fixed;
+            min-zoom: 100%;
+        }
+
+        @viewport {
+            user-zoom: fixed;
+            min-zoom: 100%;
+        }
+        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+    </style>
+
+    <!-- Opinio references -->
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script type="application/javascript" src="lib/jquery.min.js"></script>
+    <script type="application/javascript" src="ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ng-cordova-mocks.min.js"></script>
+    <script src="lib/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+    <script src="scripts/app.js"></script>
+    <script type="application/javascript" src="scripts/index_init_services.js"></script>
+    <script type="application/javascript" src="scripts/controllers.js"></script>
+    <script type="application/javascript" src="scripts/services.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="AppController as app">
+    <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+    <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+    <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+    <ion-side-menus enable-menu-with-back-views="true">
+        <ion-side-menu side="left">
+            <ion-header-bar>
+                <h1 class="title">Navigation</h1>
+            </ion-header-bar>
+            <ion-content has-header="true" class="widget">
+                <ion-list class="widget" data-uib="ionic/list">
+                    <ion-item class="item widget" href="#/" ng-click="toggleLeft()" data-uib="ionic/list_item">Home</ion-item>
+                </ion-list>
+                <ion-list class="widget" data-uib="ionic/list">
+                    <ion-item class="item widget" ng-click="display.alert('Developing innovative solutions for everyone!', 'Reinsys.com')" data-uib="ionic/list_item">About</ion-item>
+                </ion-list>
+            </ion-content>
+        </ion-side-menu>
+        <ion-side-menu-content>
+            <ion-nav-bar>
+                <ion-nav-back-button class="button-clear">
+                    <i class="ion-arrow-left-c"></i> Back
+                </ion-nav-back-button>
+                <ion-nav-buttons side="left">
+                    <!-- Toggle left side menu -->
+                    <button menu-toggle="left" class="button button-icon icon widget ion ion-navicon" data-uib="ionic/button"></button>
+                </ion-nav-buttons>
+                <ion-nav-buttons side="right">
+                    <!-- Toggle left side menu -->
+                    <button class="button button-icon icon widget ion ion-search" data-uib="ionic/button" ng-click="display.goToPath('/search')"></button>
+                </ion-nav-buttons>
+            </ion-nav-bar>
+            <ion-nav-view name="index"></ion-nav-view>
+        </ion-side-menu-content>
+    </ion-side-menus>
+    <div id="template" class="hidden"></div>
+</body>
+</html>
