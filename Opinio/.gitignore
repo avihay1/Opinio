@@ -1,22 +1,12 @@
 ﻿# .gitignore
-
-[Pp]lugins/android.json
-
-[Pp]lugins/windows.json
-
-[Pp]lugins/wp8.json
-
-[Pp]lugins/remote_ios.json
-
-[Pp]latforms/
-
 /bin
 /bld
 /.vs
 /bower_components
 /node_modules
-/platforms/android/phonegap-facebook-plugin/index-FacebookLib/ant-build
-/platforms/android/phonegap-facebook-plugin/index-FacebookLib/ant-gen
+/platforms/android/phonegap-facebook-plugin/myapp889af8-FacebookLib/build
 /platforms/android/assets/www
-/platforms/android/CordovaLib/ant-build
-/platforms/android/CordovaLib/ant-gen
+/platforms/android/.gradle
+/platforms/android/build
+/platforms/android/CordovaLib/build
+/platforms/android/com.phonegap.plugins.facebookconnect/myapp889af8-FacebookLib/build
