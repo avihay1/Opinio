@@ -6,5 +6,24 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.phonegap.plugins.facebookconnect": {
+        "source": {
+            "type": "local",
+            "path": "D:\\Projects\\Opinio\\Facebook\\phonegap-facebook-plugin-0.10.1"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "690678901065949",
+            "APP_NAME": "Opinio"
+        }
+    },
+    "phonegap-plugin-push": {
+        "source": {
+            "type": "local",
+            "path": "D:\\Projects\\Opinio\\PushNotifications\\phonegap-plugin-push-1.2.3"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
