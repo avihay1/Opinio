@@ -8,8 +8,12 @@ app.controller('AppController', function($scope, display, $ionicHistory, $ionicS
     }
 });
 app.controller('IndexController', function($rootScope, $scope, display) {
-    $rootScope.title = 'Home';    
+    $rootScope.title = 'Home';
+    
+    // call to facebook status user service => if not allow user => redirect to welcome page...
+
+    
 });
-app.controller('SearchController', function($scope, display){    
-     $scope.$parent.title = 'Search'; 
+app.controller('WelcomeController', function ($scope, display) {
+    
 });
