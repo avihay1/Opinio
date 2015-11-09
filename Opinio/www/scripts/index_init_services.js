@@ -18,16 +18,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
           }
       }
   })
-  .state('search', {
-    url: '/search',
+  .state('welcome', {
+      url: '/welcome',
        views : {
           index:{
             templateProvider : function(display){
-                return display.getPageTemplate('page-search').then(function(template){
+                return display.getPageTemplate('pre-login').then(function(template){
                     return template;
                 }); 
             },
-            controller: 'SearchController'    
+            controller: 'WelcomeController'
           }
        }
   })

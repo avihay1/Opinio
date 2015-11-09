@@ -1,0 +1,7 @@
+{
+    "name": "Opinio",
+  "dependencies": 
+  {
+    "ionic": "1.1"
+  }
+}
