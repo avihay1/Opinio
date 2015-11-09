@@ -3,9 +3,13 @@ app.controller('AppController', function($scope, display, $ionicHistory, $ionicS
     $ionicPlatform.onHardwareBackButton(function(event){
         $ionicHistory.goBack();
     });
-    $scope.toggleLeft = function(){
+    $scope.toggleLeft = function () {
         $ionicSideMenuDelegate.toggleLeft();
-    }
+    };
+   
+    $scope.takePicture = function () {
+        navigator.camera.getPicture(function (img) { alert("Success! path: " + img);}, function (err) { alert("camera error. Details: " + err);})
+    };
 });
 app.controller('IndexController', function($rootScope, $scope, display) {
     $rootScope.title = 'Home';    

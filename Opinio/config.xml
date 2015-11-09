@@ -109,4 +109,5 @@
     <param name="APP_NAME" value="Opinio" />
   </vs:plugin>
   <vs:plugin name="phonegap-plugin-push" version="1.2.3" src="D:\Projects\Opinio\PushNotifications\phonegap-plugin-push-1.2.3" />
+  <vs:plugin name="cordova-plugin-camera" version="1.2.0" />
 </widget>
