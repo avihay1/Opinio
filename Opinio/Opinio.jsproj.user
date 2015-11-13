@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ReferenceCachePath>C:\Users\avihay\AppData\Local\Temp\Opinio_refcache</ReferenceCachePath>
+    <ReferenceCachePath>C:\Users\Avishay\AppData\Local\Temp\zpwd5zpt_Opinio_refcache</ReferenceCachePath>
     <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
-    <DebuggerFlavor>RippleNexusS</DebuggerFlavor>
+    <DebuggerFlavor>AndroidEmulator</DebuggerFlavor>
     <AndroidEmulatorID>AndroidDevice;Device</AndroidEmulatorID>
     <AllowLocalNetworkLoopback>true</AllowLocalNetworkLoopback>
   </PropertyGroup>

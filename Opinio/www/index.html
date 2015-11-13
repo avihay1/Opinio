@@ -54,8 +54,7 @@
     <script type="application/javascript" src="scripts/index_init_services.js"></script>
     <script type="application/javascript" src="scripts/controllers.js"></script>
     <script type="application/javascript" src="scripts/services.js"></script>
-    <script type="application/javascript" src="scripts/facebookAPI.js"></script>
-    <script type="application/javascript" src="scripts/pushNotificationsAPI.js"></script>
+    <script type="application/javascript" src="scripts/pluginsFactory.js"></script>
     
 </head>
 
@@ -88,7 +87,7 @@
                     <ion-item class="item widget" ng-click="display.goToPath('/welcome'); toggleLeft();" data-uib="ionic/button">Log Out</ion-item>
                 </ion-list>
                 <ion-list class="widget" data-uib="ionic/list">
-                    <ion-item class="item widget" ng-click="takePicture()" data-uib="ionic/list_item">Take picture</ion-item>
+                    <ion-item class="item widget" ng-click="facebookLogin()" data-uib="ionic/list_item">TryYourFunc</ion-item>
                 </ion-list>
             </ion-content>
         </ion-side-menu>
