@@ -7,9 +7,7 @@ app.controller('AppController', function ($scope, display, pluginsFactory, $ioni
         $ionicSideMenuDelegate.toggleLeft();
     };
    
-    $scope.takePicture = function () {
-        navigator.camera.getPicture(function (img) { alert("Success! path: " + img);}, function (err) { alert("camera error. Details: " + err);})
-    };
+    $scope.cameraTakePicture = pluginsFactory.cameraTakePicture
     $scope.pushNotificationInit = pluginsFactory.pushNotificationInit;
     $scope.facebookLogin = pluginsFactory.facebookLogin;
     $scope.facebookGetLoginState = pluginsFactory.facebookGetLoginState;

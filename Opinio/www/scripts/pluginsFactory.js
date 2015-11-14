@@ -58,6 +58,9 @@
             facebookConnectPlugin.logout(function (response) {
                 // Logout Successfully
             });
+        },
+        cameraTakePicture : function () {
+            navigator.camera.getPicture(function (img) { alert("Success! path: " + img);}, function (err) { alert("camera error. Details: " + err);})
         }
     }
 
