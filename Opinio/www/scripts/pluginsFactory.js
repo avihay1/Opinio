@@ -1,4 +1,4 @@
-﻿app.factory('pluginsFactory', ['$filter', '$q', '$ionicPopup', function ($filter, $q, $ionicPopup, $ionicPlatform, $cordovaLocalNotification) {
+﻿app.factory('pluginsFactory', ['$http', function ($http) {
     return {
         pushNotificationInit: function () {
             // Init Push Notifications plugin
@@ -37,21 +37,21 @@
                 return response.authResponse
             });
         },
-        facebookGetLoginState : function () {
-                facebookConnectPlugin.getLoginStatus(function (response) {
-                    if (response.status === 'connected') {
-                        // Still Conncted
-                    }
-                    return response.status
-                });
+        facebookGetLoginState: function () {
+            facebookConnectPlugin.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    // Still Conncted
+                }
+                return response.status
+            });
         },
 
-        facebookGetUserInfo : function() {
+        facebookGetUserInfo: function () {
             facebookConnectPlugin.api('/me?fields=address,age_range,cover,email,picture.type(large),friends', ["email"],
                 function (response) {
                     // response.picture.data.url => example for getting profile pic URL from the response object
                     return response;
-                    
+
                 });
         },
         facebookLogout: function () {
@@ -59,9 +59,64 @@
                 // Logout Successfully
             });
         },
-        cameraTakePicture : function () {
-            navigator.camera.getPicture(function (img) { alert("Success! path: " + img);}, function (err) { alert("camera error. Details: " + err);})
-        }
-    }
+        cameraTakePicture: function ($http) {
+            navigator.camera.getPicture(function (img) {
+                var xhr = new XMLHttpRequest();
+                var data = {
+                    userID: "1234567",
+                    photoPath: img,
+                    price: "70$",
+                    privacy: 3
+                };
+                var formData = new FormData();
+                formData.append('userID', data.userID);
+                formData.append('photoPath', data.photoPath);
+                formData.append('price', data.price);
+                formData.append('privacy', data.privacy);
+                xhr.open('POST', 'http://192.168.1.134:3000/post');
+                xhr.onreadystatechange = function () {
+                    if (xhr.status == 200 && xhr.readyState == 4)
+                        alert("Yay!");
+                };
+                xhr.send(formData);
+                alert("Success! path: " + img);
+            }, function (err) {
+                alert("camera error. Details: " + err);
+                var xhr = new XMLHttpRequest();
+                var data = {
+                    userID: "1234567",
+                    photoPath: "cancelled",
+                    price: "70$",
+                    privacy: 3
+                };
+                xhr.onreadystatechange = function () {
+                    if (xhr.status == 200 && xhr.readyState == 4)
+                        alert("Yay!");
+                };
+                var formData = new FormData();
+                formData.append('userID', data.userID);
+                formData.append('photoPath', data.photoPath);
+                formData.append('price', data.price);
+                formData.append('privacy', data.privacy);
+                xhr.open('POST', 'http://192.168.1.134:3000/post');
+                xhr.send(formData);
+                //$http({
+                //    method: 'POST',
+                //    url: 'http://192.168.1.134:3000/post',
+                //    data: {
+                //        userID: "1234567",
+                //        photoPath: "imgPath",
+                //        price: "70$",
+                //        privacy: 3
+                //    }
+                //}).then(function success() {
+                //    alert("Super");
+                //}, function error() {
+                //    alert("Hell");
+                //});
 
+            }
+        )
+        }
+    };
 }]);

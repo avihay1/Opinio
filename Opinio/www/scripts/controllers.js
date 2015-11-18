@@ -1,4 +1,4 @@
-app.controller('AppController', function ($scope, display, pluginsFactory, $ionicHistory, $ionicSideMenuDelegate, $ionicPlatform, $rootScope) {
+app.controller('AppController', function ($scope, display, pluginsFactory, $ionicHistory, $ionicSideMenuDelegate, $ionicPlatform, $rootScope, $http) {
     $scope.display = display;
     $ionicPlatform.onHardwareBackButton(function(event){
         $ionicHistory.goBack();
