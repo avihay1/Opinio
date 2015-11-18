@@ -25,7 +25,8 @@
 
         @viewport {
             width: 100vw;
-            min-zoom: 100% ;zoom: 100%;
+            min-zoom: 100%;
+            zoom: 100%;
         }
 
         @-ms-viewport {
@@ -56,7 +57,7 @@
     <script type="application/javascript" src="scripts/controllers.js"></script>
     <script type="application/javascript" src="scripts/services.js"></script>
     <script type="application/javascript" src="scripts/pluginsFactory.js"></script>
-    
+
 </head>
 
 <body ng-app="myApp" ng-controller="AppController as app">
@@ -93,22 +94,28 @@
             </ion-content>
         </ion-side-menu>
         <ion-side-menu-content>
-                <ion-nav-bar>
-                    <ion-nav-back-button class="button-clear">
-                        <i class="ion-arrow-left-c"></i> Back
-                    </ion-nav-back-button>
-                    <ion-nav-buttons side="left">
-                        <!-- Toggle left side menu -->
-                        <button menu-toggle="left" class="button button-icon icon widget ion ion-navicon" data-uib="ionic/button"></button>
-                    </ion-nav-buttons>
-                    <ion-nav-buttons side="right">
-
-                        <button class="button" data-uib="ionic/button">Home</button>
-                        <button class="button" data-uib="ionic/button">Top</button>
-
-                    </ion-nav-buttons>
-                </ion-nav-bar>
-           
+            <ion-nav-bar >
+                <ion-nav-back-button class="button-clear">
+                    <i class="ion-arrow-left-c"></i> Back
+                </ion-nav-back-button>
+                <ion-nav-buttons side="left">
+                    <!-- Toggle left side menu -->
+                    <button menu-toggle="left" class="button button-icon icon widget ion ion-navicon" data-uib="ionic/button"></button>
+                </ion-nav-buttons>
+                <ion-nav-title>
+                    
+                </ion-nav-title>
+                <ion-nav-buttons side="primary ">
+                    <button class="button" data-uib="ionic/button">Home</button>
+                    <button class="button" data-uib="ionic/button">Top</button>
+                </ion-nav-buttons>
+                <ion-nav-title>
+                    
+                </ion-nav-title>
+                <ion-nav-buttons side="secondary">
+                    <button class="button button-icon icon widget ion ion-camera" data-uib="ionic/button"></button>
+                </ion-nav-buttons>
+            </ion-nav-bar>
             <ion-nav-view name="index"></ion-nav-view>
         </ion-side-menu-content>
     </ion-side-menus>

@@ -42,3 +42,39 @@ body {
     background: white ;
     color: black ;
 }
+
+/* Generic CSS */
+
+.text-center{
+    text-align:center;
+}
+
+/* Pre Login CSS */
+
+#btnLoginWithFacebook{
+    position: absolute;
+    bottom: 155px;
+}
+
+#facebookIcon {
+    top: 11px;
+    left: 42px;
+    width: 35px;
+    height: 26px;
+    position: absolute;
+}
+
+#policyComments a {
+    text-decoration:underline;
+    color: blue;
+    cursor: pointer;
+}
+
+#preLoginImg {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+

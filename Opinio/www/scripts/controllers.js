@@ -22,5 +22,9 @@ app.controller('IndexController', function($rootScope, $scope, display) {
     
 });
 app.controller('WelcomeController', function ($scope, display) {
-    
+    $scope.loginWithFaceBook = function () {
+        // call to login with facebook method from plugin service
+
+        display.goToPath('/');
+    }
 });
