@@ -10,10 +10,9 @@
     // register for Push Notifications server (I copied the registrationId from the JS console to my python script for sending a push-notification)
     // TODO: We have to upload the registrationId (push-notification Token) to our mongo DB
     push.on('registration', function (data) {
-        var request = require('request');
 
-        //request.post(
-        //    'http://192.168.42.45/push',
+        // TODO: Send the token to the db or something depends on the session management we decide
+        //    'http://ourserver/push',
         //    { form: { notification: data } },
         //    function (error, response, body) {
         //        if (!error && response.statusCode == 200) {

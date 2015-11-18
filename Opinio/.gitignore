@@ -10,3 +10,6 @@
 /platforms/android/build
 /platforms/android/CordovaLib/build
 /platforms/android/com.phonegap.plugins.facebookconnect/myapp889af8-FacebookLib/build
+/platforms/ios
+/platforms/platforms.json
+/plugins/ios.json

@@ -73,7 +73,7 @@
                 formData.append('photoPath', data.photoPath);
                 formData.append('price', data.price);
                 formData.append('privacy', data.privacy);
-                xhr.open('POST', 'http://192.168.1.134:3000/post');
+                xhr.open('POST', 'http://ourserver:3000/post');
                 xhr.onreadystatechange = function () {
                     if (xhr.status == 200 && xhr.readyState == 4)
                         alert("Yay!");
@@ -98,7 +98,7 @@
                 formData.append('photoPath', data.photoPath);
                 formData.append('price', data.price);
                 formData.append('privacy', data.privacy);
-                xhr.open('POST', 'http://192.168.1.134:3000/post');
+                xhr.open('POST', 'http://ourserver:3000/post');
                 xhr.send(formData);
                 //$http({
                 //    method: 'POST',
