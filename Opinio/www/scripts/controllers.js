@@ -1,4 +1,4 @@
-app.controller('AppController', function ($scope, display, pluginsFactory, $ionicHistory, $ionicSideMenuDelegate, $ionicPlatform, $rootScope, $http) {
+app.controller('AppController', function ($scope, display, postService, loginService, $ionicHistory, $ionicSideMenuDelegate, $ionicPlatform, $rootScope, $http) {
     $scope.display = display;
     $ionicPlatform.onHardwareBackButton(function(event){
         $ionicHistory.goBack();
@@ -7,12 +7,12 @@ app.controller('AppController', function ($scope, display, pluginsFactory, $ioni
         $ionicSideMenuDelegate.toggleLeft();
     };
    
-    $scope.cameraTakePicture = pluginsFactory.cameraTakePicture
-    $scope.pushNotificationInit = pluginsFactory.pushNotificationInit;
-    $scope.facebookLogin = pluginsFactory.facebookLogin;
-    $scope.facebookGetLoginState = pluginsFactory.facebookGetLoginState;
-    $scope.facebookGetUserInfo = pluginsFactory.facebookGetUserInfo;
-    $scope.facebookLogout = pluginsFactory.facebookLogout;
+    $scope.cameraTakePicture = postService.cameraTakePicture
+    $scope.pushNotificationInit = loginService.pushNotificationInit;
+    $scope.facebookLogin = loginService.facebookLogin;
+    $scope.facebookGetLoginState = loginService.facebookGetLoginState;
+    $scope.facebookGetUserInfo = loginService.facebookGetUserInfo;
+    $scope.facebookLogout = loginService.facebookLogout;
 });
 app.controller('IndexController', function($rootScope, $scope, display) {
     $rootScope.title = 'Home';
