@@ -72,6 +72,9 @@
             </ion-header-bar>
             <ion-content has-header="true" class="widget">
                 <ion-list class="widget" data-uib="ionic/list">
+                    <ion-item class="item widget" data-uib="ionic/list_item">Home</ion-item>
+                </ion-list>
+                <ion-list class="widget" data-uib="ionic/list">
                     <ion-item class="item widget" data-uib="ionic/list_item">My Profile</ion-item>
                 </ion-list>
                 <ion-list class="widget" data-uib="ionic/list">
@@ -95,28 +98,35 @@
             </ion-content>
         </ion-side-menu>
         <ion-side-menu-content>
-            <ion-nav-bar >
+            <ion-nav-bar class="has-tabs-top bar-positive">
                 <ion-nav-back-button class="button-clear">
                     <i class="ion-arrow-left-c"></i> Back
                 </ion-nav-back-button>
                 <ion-nav-buttons side="left">
-                    <!-- Toggle left side menu -->
                     <button menu-toggle="left" class="button button-icon icon widget ion ion-navicon" data-uib="ionic/button"></button>
                 </ion-nav-buttons>
                 <ion-nav-title>
-                    
+                    Opinio
                 </ion-nav-title>
-                <ion-nav-buttons side="primary ">
-                    <button class="button" data-uib="ionic/button">Home</button>
-                    <button class="button" data-uib="ionic/button">Top</button>
-                </ion-nav-buttons>
-                <ion-nav-title>
-                    
-                </ion-nav-title>
-                <ion-nav-buttons side="secondary">
-                    <button class="button button-icon icon widget ion ion-camera" data-uib="ionic/button"></button>
-                </ion-nav-buttons>
             </ion-nav-bar>
+
+            <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+                <div class="tabs">
+                    <a class="tab-item active">
+                        <i class="icon ion-home" ng-click="showAllPosts()"></i>
+                        Home
+                    </a>
+                    <a class="tab-item" ng-click="showTopPosts()">
+                        <i class="icon ion-star"></i>
+                        Top
+                    </a>
+                    <a class="tab-item" ng-click="cameraTakePicture()">
+                        <i class="icon ion-camera"></i>
+                        Add Post
+                    </a>
+                </div>
+            </div>
+
             <ion-nav-view name="index"></ion-nav-view>
         </ion-side-menu-content>
     </ion-side-menus>

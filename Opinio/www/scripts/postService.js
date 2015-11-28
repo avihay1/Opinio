@@ -26,5 +26,6 @@
                 alert("camera error. Details: " + err);
             })
         }
+        // add function to get the home posts and top posts (one function and client filter?, paging on server? (show more))
     };
 }]);
