@@ -1,4 +1,7 @@
 app.controller('AppController', function ($scope, display, postService, loginService, $ionicHistory, $ionicSideMenuDelegate, $ionicPlatform, $rootScope, $http) {
+    $scope.isViewHideTabs = false;
+    $scope.posts = postService.getHomePosts();
+
     $scope.display = display;
     $ionicPlatform.onHardwareBackButton(function(event){
         $ionicHistory.goBack();
@@ -13,10 +16,31 @@ app.controller('AppController', function ($scope, display, postService, loginSer
     $scope.facebookGetLoginState = loginService.facebookGetLoginState;
     $scope.facebookGetUserInfo = loginService.facebookGetUserInfo;
     $scope.facebookLogout = loginService.facebookLogout;
+
+    $scope.tab = 1;
+
+    $scope.isSet = function (checkTab) {
+        return this.tab === checkTab;
+    };
+
+    $scope.setTab = function (setTab) {
+            $scope.tab = setTab;
+    };
+
+    $scope.showAllPosts = function () {
+        $scope.setTab(1);
+        $scope.posts = postService.getHomePosts();
+    }
+
+    $scope.showTopPosts = function () {
+        $scope.setTab(2);
+        $scope.posts = postService.getTopPosts();
+    }
 });
 app.controller('IndexController', function($rootScope, $scope, display) {
     $rootScope.title = 'Home';
-    
+    $scope.isViewHideTabs = false;
+
     // call to facebook status user service => if not allow user => redirect to welcome page...
 
     

@@ -14,7 +14,7 @@
   <body ng-app="myApp">
 
     <div class="upage vertical-col left hidden" id="pre-login">
-      <ion-view hide-nav-bar="true">
+      <ion-view hide-nav-bar="true" hide-tabs>
         <ion-content scroll="false">
             <div class="bar bar-header bar-positive">
                 <h1 class="title">Opinio</h1>
@@ -27,7 +27,7 @@
             </button>
             
             <div id="policyComments" class="bar bar-footer bar-stable">
-                &nbsp;&nbsp;&nbsp;&nbsp; By login, you agree to our &nbsp;<a>Terms</a>&nbsp;&&nbsp;<a>Privacy Policy</a>
+                By login, you agree to our &nbsp;<a>Terms</a>&nbsp;&&nbsp;<a>Privacy Policy</a>
             </div>
         </ion-content>
       </ion-view>
@@ -37,70 +37,16 @@
         <ion-content>
             <br />
             <br />
-            <div class="list card">
+            <div ng-repeat="post in posts" class="list card">
                 <div class="item item-avatar">
-                    <img src="images/mcfly.jpg">
-                    <h2>Marty McFly</h2>
-                    <p>November 05, 1955</p>
+                    <img img-src ng-src="{{post.user.pictureUrl}}" alt="user image">
+                    <h2>{{post.user.name}}</h2>
+                    <p>{{post.createdOn}}</p>
                 </div>
                 <div class="item item-body">
-                    <img class="full-image" src="images/delorean.jpg">
-                    <p>
-                        This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-                        the content is from a card-body consisting of an image and paragraph text. The footer
-                        consists of tabs, icons aligned left, within the card-footer.
-                    </p>
-                    <p>
-                        <a href="#" class="subdued">1 Like</a>
-                        <a href="#" class="subdued">5 Comments</a>
-                    </p>
-                </div>
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-thumbsup"></i>
-                        Like
-                    </a>
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-chatbox"></i>
-                        Comment
-                    </a>
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-share"></i>
-                        Share
-                    </a>
-                </div>
-            </div>
-            <div class="list card">
-                <div class="item item-avatar">
-                    <img src="images/mcfly.jpg">
-                    <h2>Marty McFly</h2>
-                    <p>November 05, 1955</p>
-                </div>
-                <div class="item item-body">
-                    <img class="full-image" src="images/delorean.jpg">
-                    <p>
-                        This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-                        the content is from a card-body consisting of an image and paragraph text. The footer
-                        consists of tabs, icons aligned left, within the card-footer.
-                    </p>
-                    <p>
-                        <a href="#" class="subdued">1 Like</a>
-                        <a href="#" class="subdued">5 Comments</a>
-                    </p>
-                </div>
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-thumbsup"></i>
-                        Like
-                    </a>
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-chatbox"></i>
-                        Comment
-                    </a>
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-share"></i>
-                        Share
-                    </a>
+                    <img img-src class="full-image" ng-src="{{post.photoPath}}" alt="post image">
+                    <button class="likeBtn postBtns"></button>
+                    <button class="disLikeBtn postBtns"></button>
                 </div>
             </div>
         </ion-content>

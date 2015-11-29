@@ -8,7 +8,7 @@
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
     <!--meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"-->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'  ws://localhost:35729 data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *;script-src 'self' 'unsafe-eval' 'unsafe-inline'; connect-src *" >
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' img-src *  ws://localhost:35729 data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *;script-src 'self' 'unsafe-eval' 'unsafe-inline'; connect-src *" >
     <link rel="stylesheet" type="text/css" href="ionic/css/ionic.min.css">
     <title>Opinio</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
@@ -54,10 +54,11 @@
     <script src="scripts/platformOverrides.js"></script>
     <script src="scripts/app.js"></script>
     <script type="application/javascript" src="scripts/index_init_services.js"></script>
-    <script type="application/javascript" src="scripts/controllers.js"></script>
-    <script type="application/javascript" src="scripts/services.js"></script>
-    <script type="application/javascript" src="scripts/postService.js"></script>
-    <script type="application/javascript" src="scripts/loginService.js"></script>
+    <script type="application/javascript" src="scripts/controllers/controllers.js"></script>
+    <script type="application/javascript" src="scripts/directives/directives.js"></script>
+    <script type="application/javascript" src="scripts/services/services.js"></script>
+    <script type="application/javascript" src="scripts/services/postService.js"></script>
+    <script type="application/javascript" src="scripts/services/loginService.js"></script>
 
 </head>
 
@@ -67,7 +68,7 @@
     <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
     <ion-side-menus enable-menu-with-back-views="true">
         <ion-side-menu side="left">
-            <ion-header-bar>
+            <ion-header-bar class="bar-positive">
                 <h1 class="title">Opinio</h1>
             </ion-header-bar>
             <ion-content has-header="true" class="widget">
@@ -92,41 +93,37 @@
                 <ion-list class="widget" data-uib="ionic/list">
                     <ion-item class="item widget" ng-click="display.goToPath('/welcome'); toggleLeft();" data-uib="ionic/button">Log Out</ion-item>
                 </ion-list>
-                <ion-list class="widget" data-uib="ionic/list">
+                <!--<ion-list class="widget" data-uib="ionic/list">
                     <ion-item class="item widget" ng-click="cameraTakePicture()" data-uib="ionic/list_item">TryYourFunc</ion-item>
-                </ion-list>
+                </ion-list>-->
             </ion-content>
         </ion-side-menu>
         <ion-side-menu-content>
-            <ion-nav-bar class="has-tabs-top bar-positive">
-                <ion-nav-back-button class="button-clear">
-                    <i class="ion-arrow-left-c"></i> Back
-                </ion-nav-back-button>
-                <ion-nav-buttons side="left">
-                    <button menu-toggle="left" class="button button-icon icon widget ion ion-navicon" data-uib="ionic/button"></button>
-                </ion-nav-buttons>
-                <ion-nav-title>
-                    Opinio
-                </ion-nav-title>
-            </ion-nav-bar>
+                <ion-nav-bar class="has-tabs-top bar-positive">
+                    <ion-nav-buttons side="left">
+                        <button menu-toggle="left" class="button button-icon icon widget ion ion-navicon" data-uib="ionic/button"></button>
+                    </ion-nav-buttons>
+                    <ion-nav-title>
+                        Opinio
+                    </ion-nav-title>
+                </ion-nav-bar>
 
-            <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
-                <div class="tabs">
-                    <a class="tab-item active">
-                        <i class="icon ion-home" ng-click="showAllPosts()"></i>
-                        Home
-                    </a>
-                    <a class="tab-item" ng-click="showTopPosts()">
-                        <i class="icon ion-star"></i>
-                        Top
-                    </a>
-                    <a class="tab-item" ng-click="cameraTakePicture()">
-                        <i class="icon ion-camera"></i>
-                        Add Post
-                    </a>
+                <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light {{$root.hideTabs}}">
+                    <div class="tabs">
+                        <a class="tab-item" ng-class="{ active: isSet(1) }">
+                            <i class="icon ion-home" ng-click="showAllPosts()"></i>
+                            Home
+                        </a>
+                        <a class="tab-item" ng-class="{ active: isSet(2) }" ng-click="showTopPosts()">
+                            <i class="icon ion-star"></i>
+                            Top
+                        </a>
+                        <a class="tab-item" ng-click="cameraTakePicture()">
+                            <i class="icon ion-camera"></i>
+                            Add Post
+                        </a>
+                    </div>
                 </div>
-            </div>
-
             <ion-nav-view name="index"></ion-nav-view>
         </ion-side-menu-content>
     </ion-side-menus>
