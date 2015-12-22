@@ -1,4 +1,5 @@
 app.controller('AppController', function ($scope, display, postService, loginService, $ionicHistory, $ionicSideMenuDelegate, $ionicPlatform, $rootScope, $http) {
+    loginService.pushNotificationInit();
     $scope.isViewHideTabs = false;
     $scope.posts = postService.getHomePosts();
 
@@ -9,9 +10,9 @@ app.controller('AppController', function ($scope, display, postService, loginSer
     $scope.toggleLeft = function () {
         $ionicSideMenuDelegate.toggleLeft();
     };
-   
+
     $scope.cameraTakePicture = postService.cameraTakePicture
-    $scope.pushNotificationInit = loginService.pushNotificationInit;
+    $scope.getDeviceID = loginService.getDeviceID;
     $scope.facebookLogin = loginService.facebookLogin;
     $scope.facebookGetLoginState = loginService.facebookGetLoginState;
     $scope.facebookGetUserInfo = loginService.facebookGetUserInfo;

@@ -1,4 +1,5 @@
 ﻿app.factory('loginService', [function () {
+    var deviceID;
     return {
         pushNotificationInit: function () {
             // Init Push Notifications plugin
@@ -21,8 +22,8 @@
                 //        }
                 //    }
                 //);
-                console.log("Hello");
                 console.log(data.registrationId);
+                deviceID = data.registrationId;
             });
 
             // Callback - tell the app what to do when the user get a notification
@@ -39,6 +40,12 @@
                 alert(e.message)
             });
         },
+
+        getDeviceID: function () {
+            console.log("Heaven -   " + deviceID);
+            return deviceID;
+        },
+
         facebookLogin: function () {
             facebookConnectPlugin.login(["email, public_profile"], function (response) {
                 if (response.authResponse) {
