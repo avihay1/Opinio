@@ -1,5 +1,4 @@
-app.controller('AppController', function ($scope, display, postService, loginService, $ionicHistory, $ionicSideMenuDelegate, $ionicPlatform, $rootScope, $http) {
-    loginService.pushNotificationInit();
+app.controller('AppController', function ($scope, display, postService, loginService, $ionicHistory, $ionicSideMenuDelegate, $ionicPlatform, $rootScope, $q, $http) {
     $scope.isViewHideTabs = false;
     $scope.posts = postService.getHomePosts();
 
@@ -12,10 +11,8 @@ app.controller('AppController', function ($scope, display, postService, loginSer
     };
 
     $scope.cameraTakePicture = postService.cameraTakePicture
-    $scope.getDeviceID = loginService.getDeviceID;
-    $scope.facebookLogin = loginService.facebookLogin;
+    $scope.login = loginService.login;
     $scope.facebookGetLoginState = loginService.facebookGetLoginState;
-    $scope.facebookGetUserInfo = loginService.facebookGetUserInfo;
     $scope.facebookLogout = loginService.facebookLogout;
 
     $scope.tab = 1;
