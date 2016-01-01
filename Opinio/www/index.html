@@ -53,6 +53,7 @@
     <script src="cordova.js"></script>
     <script src="scripts/platformOverrides.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/init-app.js"></script>
     <script type="application/javascript" src="scripts/index_init_services.js"></script>
     <script type="application/javascript" src="scripts/controllers/controllers.js"></script>
     <script type="application/javascript" src="scripts/directives/directives.js"></script>
@@ -62,7 +63,7 @@
 
 </head>
 
-<body ng-app="myApp" ng-controller="AppController as app">
+<body ng-controller="AppController as app">
     <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
     <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
     <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
@@ -93,9 +94,9 @@
                 <ion-list class="widget" data-uib="ionic/list">
                     <ion-item class="item widget" ng-click="display.goToPath('/welcome'); toggleLeft();" data-uib="ionic/button">Log Out</ion-item>
                 </ion-list>
-                <!--<ion-list class="widget" data-uib="ionic/list">
-                    <ion-item class="item widget" ng-click="cameraTakePicture()" data-uib="ionic/list_item">TryYourFunc</ion-item>
-                </ion-list>-->
+                <ion-list class="widget" data-uib="ionic/list">
+                    <ion-item class="item widget" ng-click="login()" data-uib="ionic/list_item">TryYourFunc</ion-item>
+                </ion-list>
             </ion-content>
         </ion-side-menu>
         <ion-side-menu-content>

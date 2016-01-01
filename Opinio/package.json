@@ -1,7 +1,5 @@
 {
     "name": "Opinio",
     "version": "1.0.0",
-    "dependencies": {
-      "ripple-emulator": "0.9.32"
-    }
+    "dependencies": {}
 }

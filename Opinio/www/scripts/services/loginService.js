@@ -1,6 +1,33 @@
-﻿app.factory('loginService', [function () {
-    return {
-        pushNotificationInit: function () {
+﻿app.factory('loginService', ['$q', '$http', function ($q, $http) {
+    function facebookLogin() {
+        return $q(
+            function (resolve, reject) {
+                facebookConnectPlugin.getLoginStatus(function (response) {
+                    if (response.status === 'connected') {
+                        // Still Conncted
+                        resolve(response.status);
+                    } else {
+                        facebookConnectPlugin.login(["email, public_profile"],
+                            function (response) {
+                                if (response.authResponse) {
+                                    // Conntected Successfully
+                                    resolve(response.authResponse);
+                                } else {
+                                    reject(response);
+                                }
+                            },
+                            function (response) {
+                                reject(response);
+                            }
+                        );
+                    }
+                });
+            }
+        )
+    }
+
+    function pushNotificationInit() {
+        return $q(function (resolve, reject) {
             // Init Push Notifications plugin
             var push = PushNotification.init({
                 "android": { "senderID": "421274789188" },
@@ -21,8 +48,8 @@
                 //        }
                 //    }
                 //);
-                console.log("Hello");
-                console.log(data.registrationId);
+                console.log("Got device id: " + data.registrationId);
+                resolve(data.registrationId);
             });
 
             // Callback - tell the app what to do when the user get a notification
@@ -38,13 +65,51 @@
             push.on('error', function (e) {
                 alert(e.message)
             });
-        },
-        facebookLogin: function () {
-            facebookConnectPlugin.login(["email, public_profile"], function (response) {
-                if (response.authResponse) {
-                    // Conntected Successfully
+
+        });
+    }
+
+    function facebookGetUserInfo() {
+        return $q(function (resolve) {
+            facebookConnectPlugin.api('/me?fields=id, name, age_range,email,picture.type(large),friends', ["email"],
+                function (response) {
+                    // response.picture.data.url => example for getting profile pic URL from the response object
+                    resolve(response);
                 }
-                return response.authResponse
+             );
+        });
+    }
+
+    return {
+        login: function () {
+
+            facebookLogin().then(function () {
+                pushNotificationInit().then(function (deviceID) {
+                    facebookGetUserInfo().then(function (userInfo) {
+                        var loginData = {
+                            pushNotificationToken: deviceID,
+                            name: userInfo.name,
+                            id: userInfo.id,
+                            email: userInfo.email,
+                            age: userInfo.age_range.min,
+                            pictureUrl: userInfo.picture.data.url,
+                            friends: userInfo.friends.data.map(function (friend) { return friend.id; })
+                        };
+                        
+                        console.log(JSON.stringify(loginData));
+                        console.log(typeof(loginData));
+
+                        $http({
+                            method: 'POST',
+                            url: 'http://10.100.102.3:3000/login',
+                            data: loginData
+                        }).then(function success() {
+                            alert("Super");
+                        }, function error() {
+                            alert("Hell");
+                        });
+                    });
+                });
             });
         },
         facebookGetLoginState: function () {
@@ -56,14 +121,6 @@
             });
         },
 
-        facebookGetUserInfo: function () {
-            facebookConnectPlugin.api('/me?fields=address,age_range,cover,email,picture.type(large),friends', ["email"],
-                function (response) {
-                    // response.picture.data.url => example for getting profile pic URL from the response object
-                    return response;
-
-                });
-        },
         facebookLogout: function () {
             facebookConnectPlugin.logout(function (response) {
                 // Logout Successfully
