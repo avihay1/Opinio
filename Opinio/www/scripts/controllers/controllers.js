@@ -34,6 +34,86 @@ app.controller('AppController', function ($scope, display, postService, loginSer
         $scope.setTab(2);
         $scope.posts = postService.getTopPosts();
     }
+
+    $scope.likePost = function (post) {
+        post.feedback.likes += 1;
+        
+        //update server..
+    }
+
+    $scope.dislikePost = function (post) {
+        post.feedback.dislikes += 1;
+
+        //update server..
+    }
+
+    $scope.getDateStringForPost = function (date) {
+        //Date.daysBetween = function (date1, date2) {
+        //    //Get 1 day in milliseconds
+        //    var one_day = 1000 * 60 * 60 * 24;
+
+        //    // Convert both dates to milliseconds
+        //    var date1_ms = date1.getTime();
+        //    var date2_ms = date2.getTime();
+
+        //    // Calculate the difference in milliseconds
+        //    var difference_ms = date2_ms - date1_ms;
+
+        //    // Convert back to days and return
+        //    return Math.round(difference_ms / one_day);
+        //}
+
+        Date.hoursBetween = function (date1, date2) {
+            //Get 1 hour in milliseconds
+            var one_hour = 1000 * 60 * 60 * 1;
+
+            // Convert both dates to milliseconds
+            var date1_ms = date1.getTime();
+            var date2_ms = date2.getTime();
+
+            // Calculate the difference in milliseconds
+            var difference_ms = date2_ms - date1_ms;
+
+            // Convert back to hours and return
+            return Math.round(difference_ms / one_hour);
+        }
+        Date.minutesBetween = function (date1, date2) {
+            //Get 1 minute in milliseconds
+            var one_minute = 1000 * 60 * 1;
+
+            // Convert both dates to milliseconds
+            var date1_ms = date1.getTime();
+            var date2_ms = date2.getTime();
+
+            // Calculate the difference in milliseconds
+            var difference_ms = date2_ms - date1_ms;
+
+            // Convert back to minutes and return
+            return Math.round(difference_ms / one_minute);
+        }
+
+        var arrDateTime = date.split(' ');
+        var arrDate = arrDateTime[0].split('/');
+        var arrTime = arrDateTime[1].split(':');
+
+        var dateObj = new Date(parseInt(arrDate[2]),
+                               parseInt(arrDate[1]) - 1,
+                               parseInt(arrDate[0]),
+                               parseInt(arrTime[0]),
+                               parseInt(arrTime[1]),
+                               arrTime[2] ? parseInt(arrTime[2]) : 0);
+
+        var hoursBetweens = Date.hoursBetween(new Date(), dateObj) * -1;
+        var minutesBetweens = Date.minutesBetween(new Date(), dateObj) * -1;
+
+        var dateText = hoursBetweens <= 24
+                        ? hoursBetweens === 0 
+                            ? minutesBetweens + " Minutes ago"
+                            : hoursBetweens + " Hours ago"
+                        : date;
+
+        return (dateText);
+    }
 });
 app.controller('IndexController', function($rootScope, $scope, display) {
     $rootScope.title = 'Home';

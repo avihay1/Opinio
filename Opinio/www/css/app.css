@@ -75,6 +75,37 @@ body {
     width: 100%;
 }
 
+.post-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 250px;
+}
 
+.postBtns {
+    background-color: black;
+    color: white;
+    opacity: 0.5;
+    width: 100px;
+    min-height: 42px !important;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    position: absolute;
+    bottom: 25px;
+    transition: ease 1s;
+}
+
+.likeBtn {
+    left: 25px;
+ }
+
+.disLikeBtn {
+    right: 25px;
+}
+
+.postBtns:hover {
+    opacity: 0.8;
+    color: white;
+}
 
 

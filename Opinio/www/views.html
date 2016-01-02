@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <link rel="stylesheet" type="text/css" href="ionic/css/ionic.min.css">
     <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
     <meta charset="UTF-8">
@@ -9,52 +9,53 @@
     <script src="cordova.js"></script>
     <script type="application/javascript" src="ionic/js/ionic.bundle.js"></script>
     <script type="application/javascript" src="lib/jquery.min.js"></script>
-  </head>
+</head>
 
-  <body ng-app="myApp">
+<body ng-app="myApp">
 
     <div class="upage vertical-col left hidden" id="pre-login">
-      <ion-view hide-nav-bar="true" hide-tabs>
-        <ion-content scroll="false">
-            <div class="bar bar-header bar-positive">
-                <h1 class="title">Opinio</h1>
-            </div>
-            <img id="preLoginImg" src="images/prelogin.jpg">
-            
-            <button id="btnLoginWithFacebook" ng-click="loginWithFaceBook()" class="button icon-left button-full button-positive">
+        <ion-view hide-nav-bar="true" hide-tabs>
+            <ion-content scroll="false">
+                <div class="bar bar-header bar-positive">
+                    <h1 class="title">Opinio</h1>
+                </div>
+                <img id="preLoginImg" src="images/prelogin.jpg">
+
+                <button id="btnLoginWithFacebook" ng-click="loginWithFaceBook()" class="button icon-left button-full button-positive">
                     <img id="facebookIcon" src="images/facebookIcon.png">
                     Log In With Facebook
-            </button>
-            
-            <div id="policyComments" class="bar bar-footer bar-stable">
-                By login, you agree to our &nbsp;<a>Terms</a>&nbsp;&&nbsp;<a>Privacy Policy</a>
-            </div>
-        </ion-content>
-      </ion-view>
+                </button>
+
+                <div id="policyComments" class="bar bar-footer bar-stable">
+                    By login, you agree to our &nbsp;<a>Terms</a>&nbsp;&&nbsp;<a>Privacy Policy</a>
+                </div>
+            </ion-content>
+        </ion-view>
     </div>
     <div class="upage vertical-col left hidden" id="page-index">
-      <ion-view>
-        <ion-content>
-            <br />
-            <br />
-            <div ng-repeat="post in posts" class="list card">
-                <div class="item item-avatar">
-                    <img img-src ng-src="{{post.user.pictureUrl}}" alt="user image">
-                    <h2>{{post.user.name}}</h2>
-                    <p>{{post.createdOn}}</p>
+        <ion-view>
+            <ion-content>
+                <br />
+                <br />
+                <div ng-repeat="post in posts" class="list card">
+                    <div class="item item-avatar">
+                        <img ng-src="{{post.user.pictureUrl}}" alt="user image">
+                        <h2>{{post.user.name + " " + (post.shop ? "shopped at " + post.shop : "went shoping (where?)") }}</h2>
+                        <p><span class="icon-left ion-android-time"></span> {{getDateStringForPost(post.createdOn)}}</p>
+                    </div>
+                    <div class="item item-body">
+                        <div class="post-image" style="background-image:url('{{post.photoPath}}')">
+                            <button ng-click="$parent.likePost(post)" class="button icon-left ion-heart likeBtn postBtns">{{ post.feedback.likes }}</button>
+                            <button ng-click="$parent.dislikePost(post)" class="button icon-left ion-heart-broken disLikeBtn postBtns">{{ post.feedback.dislikes }}</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="item item-body">
-                    <img img-src class="full-image" ng-src="{{post.photoPath}}" alt="post image">
-                    <button class="likeBtn postBtns"></button>
-                    <button class="disLikeBtn postBtns"></button>
-                </div>
-            </div>
-        </ion-content>
-        <ion-footer-bar>
-        </ion-footer-bar>
-      </ion-view>
+            </ion-content>
+            <ion-footer-bar>
+            </ion-footer-bar>
+        </ion-view>
     </div>
 
-  </body>
+</body>
 
 </html>
