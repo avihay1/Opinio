@@ -82,34 +82,39 @@
 
     return {
         login: function () {
+            var facebookResult = facebookLogin();
 
-            facebookLogin().then(function () {
-                pushNotificationInit().then(function (deviceID) {
-                    facebookGetUserInfo().then(function (userInfo) {
-                        var loginData = {
-                            pushNotificationToken: deviceID,
-                            name: userInfo.name,
-                            id: userInfo.id,
-                            email: userInfo.email,
-                            age: userInfo.age_range.min,
-                            pictureUrl: userInfo.picture.data.url,
-                            friends: userInfo.friends.data.map(function (friend) { return friend.id; })
-                        };
-                        
-                        console.log(JSON.stringify(loginData));
-                        console.log(typeof(loginData));
+            facebookResult.then(function () {
+                return pushNotificationInit();
+            }).then(function (deviceID) {
+                return facebookGetUserInfo();
+            }).then(function (userInfo) {
+                var loginData = {
+                    pushNotificationToken: deviceID,
+                    name: userInfo.name,
+                    id: userInfo.id,
+                    email: userInfo.email,
+                    age: userInfo.age_range.min,
+                    pictureUrl: userInfo.picture.data.url,
+                    friends: userInfo.friends.data.map(function (friend) { return friend.id; })
+                };
 
-                        $http({
-                            method: 'POST',
-                            url: 'http://10.100.102.3:3000/login',
-                            data: loginData
-                        }).then(function success() {
-                            alert("Super");
-                        }, function error() {
-                            alert("Hell");
-                        });
-                    });
+                console.log(JSON.stringify(loginData));
+                console.log(typeof(loginData));
+
+                $http({
+                    method: 'POST',
+                    url: 'http://10.100.102.3:3000/login',
+                    data: loginData
+                }).then(function success() {
+                    alert("Super");
+                }, function error() {
+                    alert("Hell");
                 });
+            }, 
+            function (error) {
+                // handle error - like catch
+                console.log(error);
             });
         },
         facebookGetLoginState: function () {
@@ -120,7 +125,6 @@
                 return response.status
             });
         },
-
         facebookLogout: function () {
             facebookConnectPlugin.logout(function (response) {
                 // Logout Successfully
@@ -128,3 +132,52 @@
         }
     };
 }]);
+
+// backup:
+//return {
+//    login: function () {
+
+//        facebookLogin().then(function () {
+//            pushNotificationInit().then(function (deviceID) {
+//                facebookGetUserInfo().then(function (userInfo) {
+//                    var loginData = {
+//                        pushNotificationToken: deviceID,
+//                        name: userInfo.name,
+//                        id: userInfo.id,
+//                        email: userInfo.email,
+//                        age: userInfo.age_range.min,
+//                        pictureUrl: userInfo.picture.data.url,
+//                        friends: userInfo.friends.data.map(function (friend) { return friend.id; })
+//                    };
+                        
+//                    console.log(JSON.stringify(loginData));
+//                    console.log(typeof(loginData));
+
+//                    $http({
+//                        method: 'POST',
+//                        url: 'http://10.100.102.3:3000/login',
+//                        data: loginData
+//                    }).then(function success() {
+//                        alert("Super");
+//                    }, function error() {
+//                        alert("Hell");
+//                    });
+//                });
+//            });
+//        });
+//    },
+//    facebookGetLoginState: function () {
+//        facebookConnectPlugin.getLoginStatus(function (response) {
+//            if (response.status === 'connected') {
+//                // Still Conncted
+//            }
+//            return response.status
+//        });
+//    },
+
+//    facebookLogout: function () {
+//        facebookConnectPlugin.logout(function (response) {
+//            // Logout Successfully
+//        });
+//    }
+//};
