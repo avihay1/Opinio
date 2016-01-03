@@ -82,7 +82,7 @@
 
     return {
         login: function () {
-            var deviceid = {};
+            var deviceid = null;
             var facebookResult = facebookLogin();
 
             facebookResult.then(function () {
