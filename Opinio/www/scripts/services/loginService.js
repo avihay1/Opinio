@@ -82,15 +82,17 @@
 
     return {
         login: function () {
+            var deviceid = {};
             var facebookResult = facebookLogin();
 
             facebookResult.then(function () {
                 return pushNotificationInit();
             }).then(function (deviceID) {
+                deviceid = deviceID
                 return facebookGetUserInfo();
             }).then(function (userInfo) {
                 var loginData = {
-                    pushNotificationToken: deviceID,
+                    pushNotificationToken: deviceid,
                     name: userInfo.name,
                     id: userInfo.id,
                     email: userInfo.email,
@@ -104,7 +106,7 @@
 
                 $http({
                     method: 'POST',
-                    url: 'http://10.100.102.3:3000/login',
+                    url: 'http://10.100.102.2:3000/login',
                     data: loginData
                 }).then(function success() {
                     alert("Super");
