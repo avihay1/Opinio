@@ -1,24 +1,47 @@
-﻿app.factory('postService', ['$http', function ($http) {
+﻿
+
+
+app.factory('postService', ['$http', function ($http) {
     return {
         cameraTakePicture: function () {
             navigator.camera.getPicture(
 
                 function (img) {
                     try {
-                        $http({
-                            method: 'POST',
-                            url: 'http://10.100.102.104:80/post',
-                            data: {
-                                userID: "1234567",
-                                photoPath: img,
-                                price: "70$",
-                                privacy: 3
-                            }
-                        }).then(function success() {
-                            alert("Super");
-                        }, function error() {
-                            alert("Hell");
-                        });
+                        //$http({
+                        //    method: 'POST',
+                        //    url: 'http://10.100.102.104:80/post',
+                        //    data: {
+                        //        userID: "1234567",
+                        //        photoPath: img,
+                        //        price: "70$",
+                        //        privacy: 3
+                        //    }
+                        //}).then(function success() {
+                        //    alert("Super");
+                        //}, function error() {
+                        //    alert("Hell");
+                        //});
+                        var win = function (r) {
+                            console.log("Code = " + r.responseCode);
+                            console.log("Response = " + r.response);
+                            console.log("Sent = " + r.bytesSent);
+                        }
+
+                        var fail = function (error) {
+                            alert("An error has occurred: Code = " + error.code);
+                            console.log("upload error source " + error.source);
+                            console.log("upload error target " + error.target);
+                        }
+
+                        console.log("1!");
+                        fileURL = img;
+                        var options = new FileUploadOptions();
+                        options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+                        console.log("2!");
+                        var ft = new FileTransfer();
+                        ft.upload(fileURL, encodeURI("http://192.168.1.18/post"), win, fail, options);
+                        console.log("3!");
                     }
                     catch (err) { console.log(err.message) }
 

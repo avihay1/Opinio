@@ -104,10 +104,11 @@
   <platform name="wp8">
     <splash src="res/screens/wp8/SplashScreenImage.jpg" width="480" height="800" />
   </platform>
-  <vs:plugin name="com.phonegap.plugins.facebookconnect" version="0.10.1" src="D:\Projects\Opinio\Facebook\phonegap-facebook-plugin-0.10.1">
+  <plugin name="com.phonegap.plugins.facebookconnect" version="0.10.1" src="D:\Projects\Opinio\Facebook\phonegap-facebook-plugin-0.10.1">
     <param name="APP_ID" value="690678901065949" />
     <param name="APP_NAME" value="Opinio" />
-  </vs:plugin>
-  <vs:plugin name="phonegap-plugin-push" version="1.2.3" src="D:\Projects\Opinio\PushNotifications\phonegap-plugin-push-1.2.3" />
-  <vs:plugin name="cordova-plugin-camera" version="1.2.0" />
+  </plugin>
+  <plugin name="phonegap-plugin-push" version="1.2.3" src="D:\Projects\Opinio\PushNotifications\phonegap-plugin-push-1.2.3" />
+  <plugin name="cordova-plugin-camera" version="1.2.0" />
+  <plugin name="cordova-plugin-file-transfer" version="1.5.1" />
 </widget>
